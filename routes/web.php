@@ -54,14 +54,14 @@ Route::get("/horas/crear", [HoraController::class, 'create'])
 Route::post("/horas/crear", [HoraController::class, 'store'])
 ->middleware(['auth', 'verified'])->name('horas.store');
 
-// Route::get("/horas/show/{diaH}/{horaH}", [HoraController::class, 'show'])
-// ->middleware(['auth', 'verified'])->name('horas.show');
+Route::get("/horas/show/{diaH}/{horaH}", [HoraController::class, 'show'])
+->middleware(['auth', 'verified'])->name('horas.show');
 
-Route::get("/horas/editar/{codAs}/{diaH}/{horaH}", [HoraController::class, 'edit'])
-->middleware(['auth', 'verified'])->name('horas.edit');
+Route::get("/horas/editar/{diaH}/{horaH}", [HoraController::class, 'edit'])
+->middleware(['auth', 'verified'])->name('horas.editar');
 
 Route::put("/horas/editar/{codAs}/{diaH}/{horaH}", [HoraController::class, 'update'])
-->middleware(['auth', 'verified'])->name('horas.update');
+->middleware(['auth', 'verified'])->name('horas.editar');
 
 Route::get("/horas/borrar/{codAs}/{diaH}/{horaH}", [HoraController::class, 'destroy'])
 ->middleware(['auth', 'verified'])->name('horas.destroy');

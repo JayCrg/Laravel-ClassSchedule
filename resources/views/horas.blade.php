@@ -19,12 +19,12 @@
                         </tr>
                         @foreach ($horas as $hora)
                         <tr>
-                            <td>{{ $hora->codAs }}</td>
+                            <td>{{ $hora->nombreCortoAs }}</td>
                             <td>{{ $hora->diaH }}</td>
                             <td>{{ $hora->horaH }}</td>
                             <td>
-                                <a href="/horas/editar/{{$hora->codAs}}">Editar</a>
-                                <a href="/horas/borrar/{{$hora->codAs}}" onclick="return eliminarHora('Eliminar Hora')"> Eliminar</a>
+                                <a href="/horas/editar/{{$hora->diaH}}/{{$hora->horaH}}">Editar</a>
+                                <a href="/horas/borrar/{{$hora->codAs}}/{{$hora->diaH}}/{{$hora->horaH}}" onclick="return eliminarHora('Eliminar Hora')"> Eliminar</a>
                             </td>
                         </tr>
                         @endforeach

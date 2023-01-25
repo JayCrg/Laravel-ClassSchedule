@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\HoraController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,7 +70,7 @@ Route::get("/horas/borrar/{codAs}/{diaH}/{horaH}", [HoraController::class, 'dest
 
 
 
-Route::get('/horario', [HorasController::class, 'index'])
+Route::get('/horario', [HorarioController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('horario');
 
 

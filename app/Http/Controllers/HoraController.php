@@ -13,12 +13,14 @@ class HoraController extends Controller
 {
     protected $hora;
     protected $asignatura;
+    protected $arrayTramos;
 
     public function __construct(Hora $hora, Asignatura $asignatura)
     {
         $this->hora = $hora;
         $this->asignatura = $asignatura;
         $this->middleware('auth');
+        $this->arrayTramos = ['8:15-9:15', '9:15-10:15', '10:15-11:15','Descanso', '11:45-12:45', '12:45-13:45', '13:45-14:45'];
     }
     
     /**
@@ -138,5 +140,17 @@ class HoraController extends Controller
     {
         DB::table('horas')->where('diaH', $dia)->where('horaH', $hora)->where('codAs', $asignatura)->delete();
         return redirect()->action([HoraController::class, 'index']);
+    }
+
+    public function hacerHorario(){
+        $id = Auth::user()->id;
+        $asignaturaElegida = request('asignatura');
+        if($asignaturaElegida == 0)
+            $query = $this->hora->obtenerHoras($id);
+        else
+            $query = $this->hora->obtenerHorasPorAsignatura($id, $asignaturaElegida);
+        $asignaturas = $this->asignatura->obtenerAsignaturasPorUsuario($id);
+        return view("horario", ["horas" => $query, "asignaturas" => $asignaturas,
+         "arrayTramos"=>$this->arrayTramos]);
     }
 }

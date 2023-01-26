@@ -31,7 +31,7 @@ class Asignatura extends Model
         return Asignatura::orderBy('codAs', 'desc')->first();
     }
 
-    public function obtenerAsignaturaPorDiaHora($dia, $hora)
+    public function obtenerAsignaturasPorDiaHora($dia, $hora)
     {
         $id = Auth::user()->id;
         $query = DB::table('horas')

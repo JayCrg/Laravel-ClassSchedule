@@ -70,7 +70,7 @@ Route::get("/horas/borrar/{codAs}/{diaH}/{horaH}", [HoraController::class, 'dest
 
 
 
-Route::get('/horario', [HorarioController::class, 'index'])
+Route::get('/horario', [AsignaturaController::class, 'sacarAsignatura'])
 ->middleware(['auth', 'verified'])->name('horario');
 
 
